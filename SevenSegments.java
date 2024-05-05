@@ -1,0 +1,70 @@
+import java.util.*;
+public class SevenSegments {
+
+    public static void main(String[] args) {
+	Scanner scanner = new Scanner(System.in);
+        SevenSegments sevenSegments = new SevenSegments();
+        
+        System.out.println("Enter a binary string of length 8:");
+        String binary = scanner.nextLine();
+        sevenSegments.splittingIntoArray(binary);
+}
+
+    private String[] segments = new String[8];
+    public  void splittingIntoArray(String binary) {
+        if (binary.length() != 8) {
+            throw new IllegalArgumentException("Binary input should be 8 characters long");
+        }
+        for (int index = 0; index < segments.length; index++) {
+            if (binary.charAt(index) != '0'  && binary.charAt(index) != '1') throw new IllegalArgumentException("invalid binary");
+            segments[index] = "" + binary.charAt(index);
+
+
+        }
+        displaySeven();
+    }
+
+    public void displaySeven() {
+        try {
+            display1(segments[0]);
+            display1(segments[5], segments[1]);
+            display1(segments[6]);
+            display1(segments[4], segments[2]);
+            display1(segments[3]);
+        } catch (IllegalArgumentException e) {
+            System.out.println("Invalid input: " + e.getMessage());
+        }
+    }
+
+
+    private void display1(String segments) {
+        if (!segments.equals("0") && !segments.equals("1")) {
+            throw new IllegalArgumentException("Invalid segment");
+        }
+        if (segments.equals("1")) System.out.println("* * * * *");
+
+    }
+
+    private void display1(String segments, String segment2) {
+        if (!segments.equals("0") && !segments.equals("1")) {
+            throw new IllegalArgumentException("Invalid segment");
+        }
+
+
+        if (segments.equals("1") && segment2.equals("1"))
+            for (int index = 0; index < 4; index++) System.out.println("*       *");
+
+        if (segments.equals("1") && !segment2.equals("1"))
+            for (int index = 0; index < 4; index++) System.out.println("*       ");
+
+        if (!segments.equals("1") && segment2.equals("1"))
+            for (int index = 0; index < 4; index++) System.out.println("        *");
+
+
+
+
+
+    }
+
+
+}

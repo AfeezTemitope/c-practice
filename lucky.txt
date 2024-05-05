@@ -1,0 +1,36 @@
+import java.util.Scanner;
+import java.util.Random;
+
+public class LuckyNumberGame {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        Random random = new Random();
+
+        
+        int luckyNumber = random.nextInt(100) + 1;
+
+        System.out.println("Welcome to the Lucky Number Guessing Game!");
+        System.out.println("Try to guess the lucky number between 1 and 100.");
+
+        while (true) {
+            try {
+                System.out.print("Enter your guess: ");
+                int userGuess = scanner.nextInt();
+
+                if (userGuess == luckyNumber) {
+                    System.out.println("Congratulations! " + userGuess + " is the lucky number!");
+                    break;
+                } else if (userGuess < luckyNumber) {
+                    System.out.println("Try a higher number.");
+                } else {
+                    System.out.println("Try a lower number.");
+                }
+            } catch (java.util.InputMismatchException e) {
+                System.out.println("Please enter a valid integer.");
+                scanner.nextLine();
+            }
+        }
+
+        scanner.close();
+    }
+}

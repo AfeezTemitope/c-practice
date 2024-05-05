@@ -1,0 +1,19 @@
+
+lines = 5
+
+
+for i in range(lines):
+
+    print('*' * (i + 1), end='   ')
+
+
+    print('*' * (lines - i), end='   ')
+
+ 
+    print((' ' * (lines - i - 1) + '*' * (2 * i + 1)).ljust(lines * 2 - 1), end='   ')
+
+
+    print((' ' * i + '*' * (lines * 2 - 1 - 2 * i)).ljust(lines * 2 - 1), end='   ')
+
+
+    print()
